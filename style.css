@@ -569,3 +569,28 @@ img {
     right: 0.5rem;
   }
 }
+
+
+
+
+/* ==== MOBILE FIX: tighter video-section spacing + true centering ==== */
+@media (max-width: 768px) {
+
+  /* Problem 1: min-height:100vh forced each video section to be a full
+     screen, even though the video itself is much shorter. Shrinking to
+     content + modest padding removes the huge gaps while keeping breathing
+     room. Targets only the video sections (id="section-2"), not the intro. */
+  #section-2 {
+    min-height: auto;
+    padding-top: clamp(1.5rem, 5vw, 2.5rem);
+    padding-bottom: clamp(1.5rem, 5vw, 2.5rem);
+  }
+
+  /* Problem 2: width was in vw units, which ignore the section's own
+     left/right padding, making the box wider than its container and
+     forcing it to overflow to the right. 100% sizes it to the section's
+     actual content box, so it's always centered with no overflow. */
+  .video-container {
+    width: 100%;
+  }
+}
