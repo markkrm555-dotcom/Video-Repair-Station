@@ -263,3 +263,52 @@ playPauseBtn.setAttribute('aria-label', 'Play');
 
 updateHeaderSize();
 updateProgressBar(0);
+
+
+
+
+
+
+
+
+const videos = document.querySelectorAll('.site-video');
+
+const videoObserver = new IntersectionObserver((entries) => {
+
+  entries.forEach(entry => {
+
+    const video = entry.target;
+
+    if (entry.intersectionRatio >= 0.5) {
+      video.play();
+    } else {
+      video.pause();
+    }
+
+  });
+
+}, {
+  threshold: [0, 0.5]
+});
+
+videos.forEach(video => {
+
+  videoObserver.observe(video);
+
+  const container = video.closest('.video-container');
+  const soundBtn = container.querySelector('.video-sound-btn');
+
+  soundBtn.addEventListener('click', () => {
+
+    video.muted = !video.muted;
+
+    if (video.muted) {
+      soundBtn.textContent = '🔇';
+    } else {
+      soundBtn.textContent = '🔊';
+      video.play();
+    }
+
+  });
+
+});
