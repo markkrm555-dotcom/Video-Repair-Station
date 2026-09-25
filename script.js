@@ -8,7 +8,9 @@ const playPauseBtn = document.getElementById('playPauseBtn');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const sections = Array.from(document.querySelectorAll('.section'));
+const footer = document.getElementById('footer');
 let returningToTop = false;
+let atFooter = false;
 // How far the user needs to scroll (in pixels) before the header shrinks.
 // A small threshold like this avoids the header flickering in and out right at 0.
 const SHRINK_THRESHOLD = 40;
@@ -99,48 +101,53 @@ updateProgressBar(0);
 playPauseBtn.addEventListener('click', () => {
   const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
+  // If we are not at the top -> go to first section
   if (scrollTop > 0) {
-    // Ignore scroll events while returning to top
     returningToTop = true;
 
-    // Go to the top instantly
-    window.scrollTo(0, 0);
+    sections[0].scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
 
-    // Force the button to stay Pause
-    playPauseBtn.textContent = '⏸';
-    playPauseBtn.setAttribute('aria-label', 'Pause');
+    playPauseBtn.textContent = '▶';
+    playPauseBtn.setAttribute('aria-label', 'Play');
 
-    updateProgressBar(0);
-
-    // Keep ignoring any delayed scroll event
     setTimeout(() => {
       returningToTop = false;
-
-      // Force Pause again after scroll event finishes
-      playPauseBtn.textContent = '⏸';
-      playPauseBtn.setAttribute('aria-label', 'Pause');
-    }, 50);
+    }, 600);
 
     return;
   }
 
-  // Already at the top
+  // Already at the very top -> go to first section
+  returningToTop = true;
+
+  sections[0].scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
+
   playPauseBtn.textContent = '⏸';
   playPauseBtn.setAttribute('aria-label', 'Pause');
+
+  setTimeout(() => {
+    returningToTop = false;
+  }, 600);
 });
+
 
 // =====================================================
 // Next / Previous section navigation
 // =====================================================
 
-// Finds the index of the section the user is currently viewing, by checking
-// which section's top edge has already scrolled past the header.
 function getActiveSectionIndex() {
-  const headerOffset = document.getElementById('player').offsetHeight;
+  const headerOffset = playerHeader.offsetHeight;
   let activeIndex = 0;
 
   sections.forEach((section, i) => {
     const rect = section.getBoundingClientRect();
+
     if (rect.top <= headerOffset + 5) {
       activeIndex = i;
     }
@@ -150,24 +157,98 @@ function getActiveSectionIndex() {
 }
 
 function scrollToSection(index) {
-  // Clamp so we never try to scroll to a section that doesn't exist
-  const clamped = Math.min(sections.length - 1, Math.max(0, index));
-  sections[clamped].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  atFooter = false;
+
+  if (index >= sections.length) {
+    atFooter = true;
+
+    footer.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+    return;
+  }
+
+  const clamped = Math.max(0, index);
+
+  sections[clamped].scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
 }
 
+
+// =====================================================
+// NEXT
+// =====================================================
+
 nextBtn.addEventListener('click', () => {
+
+  // Footer -> First Section
+  if (atFooter) {
+    atFooter = false;
+
+    sections[0].scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+
+    return;
+  }
+
   const current = getActiveSectionIndex();
+
+  // Last Section -> Footer
+  if (current === sections.length - 1) {
+    atFooter = true;
+
+    footer.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+
+    return;
+  }
+
+  // Normal next
   scrollToSection(current + 1);
 });
 
+// =====================================================
+// PREVIOUS
+// =====================================================
+
 prevBtn.addEventListener('click', () => {
+
+  // Footer -> Last Section
+  if (atFooter) {
+    atFooter = false;
+
+    sections[sections.length - 1].scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+
+    return;
+  }
+
   const current = getActiveSectionIndex();
+
+  // First Section -> Footer
+  if (current === 0) {
+    atFooter = true;
+
+    footer.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+
+    return;
+  }
+
+  // Normal previous
   scrollToSection(current - 1);
 });
-
-
-
-
 
 
 // Start every page reload from the top

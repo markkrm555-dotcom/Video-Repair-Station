@@ -6,6 +6,7 @@
 }
 
 :root {
+   color-scheme: light;
   --bg: #2c2d34;
   --panel: #fd7d01;
   --border: rgba(255, 255, 255, 0.08);
@@ -298,11 +299,12 @@ main {
 .intro__body p {
   max-width: 34rem;
   margin: 0 0 0rem;
-  color: rgba(255, 255, 255, 0.75);
+  color:#ffffff;
   font-size: clamp(1rem, 1.6vw, 1.15rem);
   line-height: 1.8;
   align-self: center;
   text-align: center;
+  font-weight: 700;
 }
 
 .intro__body p:last-child {
