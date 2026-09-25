@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScrollPlayer — Player-Style Navigation</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://fonts.cdnfonts.com/css/cocogoose" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ============================================= -->
+  <!-- FIXED HEADER — styled like a video player bar -->
+  <!-- ============================================= -->
+  <header class="player" id="player">
+
+    <!-- 1. Logo -->
+    <!-- Put your logo image file (e.g. logo.png) in the same folder as index.html,
+         then update the src below to match its filename. -->
+    <div class="player__brand">
+  <img id="logo_img" class="player__logo" src="logo.png" alt="Video Repair Station logo">
+  <span>Video Repair Station</span>
+</div>
+    
+    <!-- 2. Transport controls -->
+    <div class="player__controls">
+      <button class="ctrl-btn" id="prevBtn" aria-label="Previous section" title="Previous section">◀</button>
+      <button class="ctrl-btn ctrl-btn--main" id="playPauseBtn" aria-label="Pause scroll progress" title="Pause / Play">⏸</button>
+      <button class="ctrl-btn" id="nextBtn" aria-label="Next section" title="Next section">▶</button>
+    </div>
+
+    <!-- 3. Scroll progress bar (acts like a video timeline) -->
+    <div class="player__timeline">
+      <div class="timeline-track" id="timelineTrack">
+        <div class="timeline-fill" id="timelineFill"></div>
+        <div class="timeline-handle" id="timelineHandle"></div>
+      </div>
+    </div>
+    <div class="contact-btn">
+    <a href="#footer" ><i class="fa-solid fa-headset"></i></a>
+    </div>
+  </header>
+
+  <!-- ============================================= -->
+  <!-- PAGE CONTENT — sections used for demo/scroll  -->
+  <!-- ============================================= -->
+  <main>
+
+    <section class="section" id="section-1">
+      <!-- <span class="section__index">01</span> -->
+       <h1 class="intro__heading">
+        So, what is<br>
+        <span class="intro__highlight">Video Repair Station</span>?
+      </h1>
+ 
+      <span class="intro__divider" aria-hidden="true"></span>
+ 
+      <div class="intro__body">
+        <p>A place where you can hand your content over to specialists.</p>
+        <p>It’s not just about editing skills, technicalities, or tools.<br>It’s about the mindset and the approach.</p>
+      </div>
+    
+    </section>
+
+    <section class="section" id="section-2">
+  <!-- <span class="section__index">02</span> -->
+
+  <h1>History Documentary:</h1>
+
+  <div class="video-container">
+    <iframe
+      src="https://drive.google.com/file/d/1AheJDTZ9M5jsCJV3BTJ0VLZZpvPfPxuM/preview"
+      allow="autoplay"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+    <section class="section" id="section-2">
+  <!-- <span class="section__index">02</span> -->
+
+  <h1>2D Animated Storytelling:</h1>
+
+  <div class="video-container">
+    <iframe
+      src="https://drive.google.com/file/d/17hpVaIj1yTjaLeJK0tgFWaVe5CXBGk5p/preview"
+      allow="autoplay"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+    <section class="section" id="section-2">
+  <!-- <span class="section__index">02</span> -->
+
+  <h1>Celebrity Car Tier List!: </h1>
+
+  <div class="video-container">
+    <iframe
+      src="https://drive.google.com/file/d/1rjKeDDHcRAjNa6GWl7sk1r0dMh3UGuI_/preview"
+      allow="autoplay"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+    
+  <section class="section" id="section-2">
+  <!-- <span class="section__index">02</span> -->
+
+  <h1>3D Animation:</h1>
+
+  <div class="video-container">
+    <iframe
+      src="https://drive.google.com/file/d/1Cizy01-MGEerWf44Efg3S8X9iKn8JXiN/preview"
+      allow="autoplay"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+    <section class="section" id="section-2">
+  <!-- <span class="section__index">02</span> -->
+
+  <h1>Educational Talking Head:</h1>
+
+  <div class="video-container">
+    <iframe
+      src="https://drive.google.com/file/d/175WwLyMK5JBWL34wPeHGWq-vGNfaax_U/preview"
+      allow="autoplay"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+  </main>
+
+<!-- //footer -->
+<footer class="site-footer" id="footer">
+  <h3>Contact Us</h3>
+
+  <div class="footer-socials">
+  <a href="https://www.tiktok.com/@video_repair_station?_r=1&_t=ZP-9A0RprOGaOV" target="_blank">
+    <i class="fa-brands fa-tiktok"></i>
+  </a>
+
+  <a href="https://www.instagram.com/video_repair_station?stkn=ZnFkbDhzMDBkMHdh" target="_blank">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+
+  <a href="mailto:video.repair.station@gmail.com">
+    <i class="fa-solid fa-envelope"></i>
+  </a>
+</div>
+<p class="copyright">
+  © 2026 All Rights Reserved.
+</p>
+</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
