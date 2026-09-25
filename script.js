@@ -172,15 +172,13 @@ prevBtn.addEventListener('click', () => {
 
 // Start every page reload from the top
 // =====================================================
-// Reset page on reload
-// =====================================================
 history.scrollRestoration = 'manual';
 
 window.scrollTo(0, 0);
 
-// Start at the top with Pause button
-playPauseBtn.textContent = '⏸';
-playPauseBtn.setAttribute('aria-label', 'Pause');
+// Start at the top with Play button
+playPauseBtn.textContent = '▶';
+playPauseBtn.setAttribute('aria-label', 'Play');
 
 updateHeaderSize();
 updateProgressBar(0);

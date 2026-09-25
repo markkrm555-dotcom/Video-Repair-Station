@@ -228,6 +228,7 @@ main {
   max-width: 45rem;
   margin: 0 auto;
   border-bottom: 1px solid var(--border);
+  text-align: center;
 }
 
 .section--last {
@@ -239,12 +240,14 @@ main {
   color: var(--text-dim);
   letter-spacing: 0.1em;
   /* margin-bottom: 0.9rem; */
+  
 }
 
 .section h1 {
   font-size: clamp(1.75rem, 4vw, 2.6rem);
   margin: 0 0 1rem;
   line-height: 1.2;
+  
 }
 
 .section p {
@@ -274,6 +277,7 @@ main {
 
 .intro__highlight {
   color: #fd7d01;
+  
 }
 
 .intro__divider {
@@ -282,19 +286,30 @@ main {
   height: 2px;
   margin: 1.75rem 0;
   background: #fd7d01;
+  text-align: center;
+  align-self: center;
+}
+.intro__body{
+   display: block;
+    text-align: center;
+   align-self: center;
 }
 
 .intro__body p {
   max-width: 34rem;
-  margin: 0 0 1.1rem;
+  margin: 0 0 0rem;
   color: rgba(255, 255, 255, 0.75);
   font-size: clamp(1rem, 1.6vw, 1.15rem);
   line-height: 1.8;
+  align-self: center;
+  text-align: center;
 }
 
 .intro__body p:last-child {
   margin-bottom: 0;
 }
+
+
 
 
 /* =====================================================
@@ -401,6 +416,7 @@ main {
   overflow: hidden;
   border-radius: 1rem;
   background: #000;
+  margin: 0 auto;
   
 }
 
@@ -446,3 +462,110 @@ main {
   transform: translateY(-50%) scale(1.03);
 }
 
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   Responsive Fixes
+========================= */
+
+body {
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 6vw;
+  }
+
+  .video-container {
+    width: 90vw;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  :root {
+    --logo-size: clamp(1.2rem, 5vw, 1.5rem);
+    --logo_img-size: clamp(2.5rem, 10vw, 3rem);
+    --btn-size: clamp(1.8rem, 6vw, 2.2rem);
+    --btn-size-main: clamp(2.1rem, 7vw, 2.5rem);
+  }
+
+  .section {
+    padding: 2.5rem 6vw;
+  }
+
+  .video-container {
+    width: 92vw;
+    border-radius: 0.6rem;
+  }
+
+  .contact-btn {
+    right: 0.75rem;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  :root {
+    --logo-size: clamp(1rem, 5vw, 1.3rem);
+    --logo_img-size: clamp(2.2rem, 10vw, 2.6rem);
+    --btn-size: clamp(1.7rem, 6vw, 2rem);
+    --btn-size-main: clamp(2rem, 7vw, 2.3rem);
+  }
+
+  .player {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .player__brand {
+    gap: 0.5rem;
+  }
+
+  .player__controls {
+    gap: 0.5rem;
+  }
+
+  .player__timeline {
+    width: 90%;
+  }
+
+  .video-container {
+    width: 94vw;
+  }
+
+  .footer-socials {
+    gap: 1.5rem;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 375px) {
+  .section {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  .player__brand span {
+    font-size: 0.85rem;
+  }
+
+  .contact-btn {
+    right: 0.5rem;
+  }
+}
