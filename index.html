@@ -26,9 +26,9 @@
     
     <!-- 2. Transport controls -->
     <div class="player__controls">
-      <button class="ctrl-btn" id="prevBtn" aria-label="Previous section" title="Previous section">◀</button>
+      <button class="ctrl-btn" id="prevBtn" aria-label="Previous section" title="Previous section"><i class="fa-solid fa-play" style="transform: scaleX(-1);"></i></button>
       <button class="ctrl-btn ctrl-btn--main" id="playPauseBtn" aria-label="Pause scroll progress" title="Pause / Play">⏸</button>
-      <button class="ctrl-btn" id="nextBtn" aria-label="Next section" title="Next section">▶</button>
+      <button class="ctrl-btn" id="nextBtn" aria-label="Next section" title="Next section"><i class="fa-solid fa-play"></i></button>
     </div>
 
     <!-- 3. Scroll progress bar (acts like a video timeline) -->
@@ -48,22 +48,30 @@
   <!-- ============================================= -->
   <main>
 
-    <section class="section" id="section-1">
-      <!-- <span class="section__index">01</span> -->
-       <h1 class="intro__heading">
-        So, what is<br>
-        <span class="intro__highlight">Video Repair Station</span>?
-      </h1>
- 
-      <span class="intro__divider" aria-hidden="true"></span>
- 
-      <div class="intro__body">
-        <p>A place where you can hand your content over to specialists.</p>
-        <p>It’s not just about editing skills, technicalities, or tools.<br>It’s about the mindset and the approach.</p>
-      </div>
-    
-    </section>
+    <section class="section intro-section" id="section-1">
 
+  <div class="intro-content">
+    <h1 class="intro__heading">
+      So, what is<br>
+      <span class="intro__highlight">Video Repair Station</span>?
+    </h1>
+
+    <span class="intro__divider" aria-hidden="true"></span>
+
+    <div class="intro__body">
+      <p>A place where you can hand your content over to specialists.</p>
+      <p>
+        It’s not just about editing skills, technicalities, or tools.<br>
+        It’s about the mindset and the approach.
+      </p>
+    </div>
+  </div>
+
+  <div class="intro-logo">
+    <img src="./Logo.png" alt="Video Repair Station logo">
+  </div>
+
+</section>
     <section class="section" id="section-2">
   <!-- <span class="section__index">02</span> -->
 
@@ -76,7 +84,7 @@
   </video>
 
   <button class="video-sound-btn" type="button">
-    🔇
+    <i class="fa-solid fa-volume-xmark"></i>
   </button>
 </div>
 </section>
@@ -92,7 +100,7 @@
   </video>
 
   <button class="video-sound-btn" type="button">
-    🔇
+    <i class="fa-solid fa-volume-xmark"></i>
   </button>
 </div>
 </section>
@@ -108,7 +116,7 @@
   </video>
 
   <button class="video-sound-btn" type="button">
-    🔇
+    <i class="fa-solid fa-volume-xmark"></i>
   </button>
 </div>
 </section>
@@ -120,12 +128,12 @@
   <h1>Celebrity Car Tier List!: </h1>
 
   <div class="video-container">
-  <video class="site-video" muted loop playsinline>
+  <video class="site-video" muted loop playsinline id="zome">
     <source src="https://res.cloudinary.com/jvnnlaor/video/upload/v1790358344/Car_Tielist.mp4" type="video/mp4">
   </video>
 
   <button class="video-sound-btn" type="button">
-    🔇
+    <i class="fa-solid fa-volume-xmark"></i>
   </button>
 </div>
 </section>
@@ -141,7 +149,7 @@
   </video>
 
   <button class="video-sound-btn" type="button">
-    🔇
+    <i class="fa-solid fa-volume-xmark"></i>
   </button>
 </div>
 </section>

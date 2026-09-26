@@ -73,10 +73,10 @@ function handleScroll() {
   if (returningToTop) return;
 
   if (percent <= 0) {
-    playPauseBtn.textContent = '▶';
+    playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
     playPauseBtn.setAttribute('aria-label', 'Play');
   } else {
-    playPauseBtn.textContent = '⏸';
+    playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
     playPauseBtn.setAttribute('aria-label', 'Pause');
   }
 }
@@ -110,7 +110,7 @@ playPauseBtn.addEventListener('click', () => {
       block: 'start'
     });
 
-    playPauseBtn.textContent = '▶';
+    playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
     playPauseBtn.setAttribute('aria-label', 'Play');
 
     setTimeout(() => {
@@ -128,7 +128,7 @@ playPauseBtn.addEventListener('click', () => {
     block: 'start'
   });
 
-  playPauseBtn.textContent = '⏸';
+  playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
   playPauseBtn.setAttribute('aria-label', 'Pause');
 
   setTimeout(() => {
@@ -258,7 +258,7 @@ history.scrollRestoration = 'manual';
 window.scrollTo(0, 0);
 
 // Start at the top with Play button
-playPauseBtn.textContent = '▶';
+playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
 playPauseBtn.setAttribute('aria-label', 'Play');
 
 updateHeaderSize();
@@ -303,9 +303,9 @@ videos.forEach(video => {
     video.muted = !video.muted;
 
     if (video.muted) {
-      soundBtn.textContent = '🔇';
+      soundBtn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
     } else {
-      soundBtn.textContent = '🔊';
+      soundBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
       video.play();
     }
 
