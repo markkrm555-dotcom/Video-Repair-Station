@@ -412,7 +412,7 @@ main {
 
 @media (max-width: 768px) {
   .intro-logo {
-    transform: translateY(-8rem);
+    transform: translateY(-7rem);
   }
 }
 
