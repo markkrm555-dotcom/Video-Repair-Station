@@ -282,6 +282,8 @@ main {
   justify-content: space-between;
   gap: 5rem;
   text-align: left;
+  min-height: 95vh;
+
 }
 
 .intro-content {
@@ -412,7 +414,7 @@ main {
 
 @media (max-width: 768px) {
   .intro-logo {
-    transform: translateY(-7rem);
+    transform: translateY(-8rem);
   }
 }
 
@@ -605,7 +607,7 @@ main {
 
 .stat-number {
   color: #fd7d01;
-  font-size: clamp(3rem, 7vw, 5rem);
+  font-size: clamp(6rem, 7vw, 12rem);
   font-weight: 700;
   line-height: 1;
 }
