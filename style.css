@@ -211,6 +211,13 @@ body {
   height: 0.55rem;
 }
 
+
+.timeline-track {
+  cursor: pointer;
+  touch-action: none;
+}
+
+
 /* =====================================================
    Page content
 ===================================================== */
@@ -398,11 +405,16 @@ main {
   }
 
   .intro-logo {
+    margin-top: 0rem;
     width: clamp(10rem, 45vw, 16rem);
   }
 }
 
-
+@media (max-width: 768px) {
+  .intro-logo {
+    transform: translateY(-5rem);
+  }
+}
 
 
 /* ============================================================= */
@@ -558,7 +570,95 @@ main {
 
 
 
+.stats-section {
+  max-width: 70rem;
+  width: 100%;
+  min-height: 100vh;
+  padding: 4rem 6vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  text-align: center;
+  margin: 0 auto;
+}
 
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-number {
+  color: #fd7d01;
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-label {
+  margin-top: 0.75rem;
+  color: #ffffff;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 600;
+}
+
+
+.stat-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1.5rem 2rem;
+  min-width: 10rem;
+
+  border: 2px solid #fd7d01;
+  border-radius: 1rem;
+
+  background: rgba(253, 125, 1, 0.08);
+
+  box-shadow: 0 0 25px rgba(253, 125, 1, 0.12);
+}
+
+.stat-number {
+  color: #ffffff;
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-plus {
+  color: #fd7d01;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  margin-left: 0.15rem;
+}
+
+.stat-label {
+  margin-top: 0.75rem;
+  color: #ffffff;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 600;
+}
+
+
+
+
+@media (max-width: 768px) {
+  .stats-section {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 1rem;
+    min-height: 100vh;
+    padding-top: 7rem;
+    padding-bottom: 5rem;
+  }
+
+  .stat:last-child {
+    grid-column: 1 / -1;
+  }
+}
 
 
 
@@ -683,5 +783,18 @@ img {
      actual content box, so it's always centered with no overflow. */
   .video-container {
     width: 100%;
+  }
+}
+
+
+
+
+
+@media (max-width: 768px) {
+  .stats-section {
+    min-height: 70vh;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    justify-content: center;
   }
 }

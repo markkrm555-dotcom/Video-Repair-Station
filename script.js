@@ -166,15 +166,22 @@ function scrollToSection(index) {
       behavior: 'smooth',
       block: 'start'
     });
+
     return;
   }
 
   const clamped = Math.max(0, index);
+  const section = sections[clamped];
 
-  sections[clamped].scrollIntoView({
-    behavior: 'smooth',
-    block: 'start'
-  });
+  const offset =
+  window.innerWidth <= 768 && section.id !== 'stats'
+    ? -115
+    : 0;
+
+window.scrollTo({
+  top: section.offsetTop + (window.innerWidth <= 768 && section.id === 'stats' ? 300 : offset),
+  behavior: 'smooth'
+});
 }
 
 
@@ -184,7 +191,6 @@ function scrollToSection(index) {
 
 nextBtn.addEventListener('click', () => {
 
-  // Footer -> First Section
   if (atFooter) {
     atFooter = false;
 
@@ -198,7 +204,6 @@ nextBtn.addEventListener('click', () => {
 
   const current = getActiveSectionIndex();
 
-  // Last Section -> Footer
   if (current === sections.length - 1) {
     atFooter = true;
 
@@ -210,10 +215,8 @@ nextBtn.addEventListener('click', () => {
     return;
   }
 
-  // Normal next
   scrollToSection(current + 1);
 });
-
 // =====================================================
 // PREVIOUS
 // =====================================================
@@ -311,4 +314,99 @@ videos.forEach(video => {
 
   });
 
+});
+
+
+
+
+const statNumbers = document.querySelectorAll('.stat-number');
+const statsSection = document.getElementById('stats');
+
+let countersStarted = false;
+
+const statsObserver = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting && !countersStarted) {
+    countersStarted = true;
+
+    statNumbers.forEach(counter => {
+      const target = Number(counter.dataset.target);
+      const duration = 1500;
+      const startTime = performance.now();
+
+      function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        const value = Math.floor(progress * target);
+        counter.textContent = value;
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target;
+        }
+      }
+
+      requestAnimationFrame(updateCounter);
+    });
+  }
+}, {
+  threshold: 0.3
+});
+
+statsObserver.observe(statsSection);
+
+
+
+
+
+
+// =====================================================
+// Timeline -> Page Scroll
+// =====================================================
+
+let isDraggingTimeline = false;
+
+function scrollPageFromTimeline(clientX) {
+  const rect = timelineTrack.getBoundingClientRect();
+
+  let percent = (clientX - rect.left) / rect.width;
+  percent = Math.max(0, Math.min(1, percent));
+
+  const maxScroll =
+    document.documentElement.scrollHeight - window.innerHeight;
+
+  window.scrollTo({
+    top: percent * maxScroll,
+    behavior: 'auto'
+  });
+}
+
+// Click on timeline
+timelineTrack.addEventListener('click', (e) => {
+  scrollPageFromTimeline(e.clientX);
+});
+
+// Start dragging
+timelineTrack.addEventListener('pointerdown', (e) => {
+  isDraggingTimeline = true;
+  timelineTrack.setPointerCapture(e.pointerId);
+
+  scrollPageFromTimeline(e.clientX);
+});
+
+// Drag
+timelineTrack.addEventListener('pointermove', (e) => {
+  if (!isDraggingTimeline) return;
+
+  scrollPageFromTimeline(e.clientX);
+});
+
+// Stop dragging
+timelineTrack.addEventListener('pointerup', () => {
+  isDraggingTimeline = false;
+});
+
+timelineTrack.addEventListener('pointercancel', () => {
+  isDraggingTimeline = false;
 });
